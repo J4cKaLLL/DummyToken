@@ -1,0 +1,54 @@
+- Para Obtener todas las cuentas de ejemplo del contrato:
+
+      web3.eth.getAccounts().then(e => console.log(e));
+
+- Para crear una instancia del contrato desplegado
+
+      DummyToken.deployed().then(function(instance){app=instance;})
+      
+- Para mostrar las funciones disponibles del contrato
+      
+      app
+ 
+ - Para asignar la pŕimera address a una variable
+ 
+      web3.eth.getAccounts().then( function(s){FirstA=s[0]})
+      web3.eth.getAccounts().then( function(s){SecondA=s[1]})
+      web3.eth.getAccounts().then( function(s){ThirdA=s[2]})
+      
+ - Para mostrar las direcciones:
+ 
+      FirstA
+      SecondA
+      ThirdA
+
+- Para minar Tokens
+
+      app.mine({from: FirstA})
+      app.mine({from: SecondA})
+      app.mine({from: ThirdA})
+      
+- Luego de minar para obtener los balances:
+      app.balanceOf(FirstA)
+      app.balanceOf(SecondA)
+      app.balanceOf(ThirdA)
+      
+Como resultado las 'words' aumnetan. 
+
+- Para hacer una transferencia
+
+      app.trasnfer(FirstA,9,{from: SecondA})
+      
+  Esto transfiere 9 desde SecondA a FirstA
+
+- Para habilitar una cuenta para transferir a un tercero desde otra cuenta:
+
+      app.approve(SecondA,11,{from:ThirdA})
+      
+- Para consultar cuanto esta habilitado a trasnferir:
+
+      app.allowance(ThirdA, SecondA)
+      
+El resultado deberia ser 11
+
+- Para enviar el balance desde la cuenta 2 a la cuenta 3 usando el balance de la cuenta 1
